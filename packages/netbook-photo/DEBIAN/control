@@ -1,0 +1,9 @@
+Package: netbook-photo
+Version: 1.0
+Section: metapackages
+Priority: optional
+Architecture: all
+Depends: entangle, gphoto2
+Maintainer: Fern <fernando.a.reyna@gmail.com>
+Description: Meta-package for Netbook Linux v2 photography tools
+ This package pulls in all lightweight photography apps used in the Netbook Linux distro.
