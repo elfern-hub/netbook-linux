@@ -1,0 +1,21 @@
+Package: netbook-gui
+Version: 1.0.1
+Section: metapackages
+Priority: optional
+Architecture: all
+Depends: xorg,
+         lightdm,
+	 lightdm-gtk-greeter,
+	 lxqt-core,
+	 lxqt-panel,
+         openbox,
+         obconf,
+         tint2,
+	 feh,
+         pcmanfm-qt,
+         lxappearance,
+         lxqt-session,nm-applet, pulseaidio, volumeicon-alsa
+Maintainer: Fern <fernando.a.reyna@gmail.com>
+Description: Netbook Linux v2 lightweight GUI environment
+ A minimal graphical environment for older netbooks using Openbox and LXQt tools.
+ Includes a window manager, panel, file manager, login manager, and basic appearance settings.

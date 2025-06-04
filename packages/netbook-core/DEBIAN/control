@@ -1,0 +1,8 @@
+Package: netbook-core
+Version: 1.0
+Section: utils
+Priority: required
+Architecture: i386
+Depends: sudo, neofetch, htop, curl, rsync, ufw, zram-tools, tlp, nano, git, tree, wget, tmux, unzip, network-manager, neovim, udisks2, udiskie, openssh-server,nmcli
+Maintainer: Fernando Reyna <fernando.a.reyna@gmail.com>
+Description: Netbook Linux Core applications and utilities
