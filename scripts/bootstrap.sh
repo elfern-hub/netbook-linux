@@ -22,10 +22,23 @@ if command -v git >/dev/null 2>&1 && ping -c 1 github.com >/dev/null 2>&1; then
 else
     echo "💾 Git not available or GitHub unreachable. Falling back to ISO/CDROM..."
 
-    # Add custom repo from ISO if not already present
-    if ! grep -q '/cdrom' /etc/apt/sources.list.d/netbook.list 2>/dev/null; then
-        echo "deb [trusted=yes] file:///cdrom dists/stable netbook" | sudo tee /etc/apt/sources.list.d/netbook.list
+# Auto-detect mounted ISO path
+    for mount_point in /cdrom /media/cdrom /mnt /media/*; do
+        if [ -e "$mount_point/pool/netbook/netbook-core.deb" ]; then
+            CDROM_PATH="$mount_point"
+            break
+        fi
+    done
+
+    if [ -z "${CDROM_PATH:-}" ]; then
+        echo "❌ Could not find Netbook Linux ISO repo."
+        exit 1
     fi
+
+    echo "📁 Detected Netbook repo at: $CDROM_PATH"
+
+    # Write correct APT source line
+    echo "deb [trusted=yes] file://$CDROM_PATH dists/stable netbook" | tee /etc/apt/sources.list.d/netbook.list
 
     sudo apt update
     sudo apt install -y netbook-core netbook-gui
